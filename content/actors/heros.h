@@ -4,7 +4,6 @@
 #include "none.h"
 #include "move.h"
 #include "closedoor.h"
-#include "opendoor.h"
 #include "rest.h"
 
 namespace Heros {
