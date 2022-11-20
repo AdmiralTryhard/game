@@ -1,7 +1,6 @@
 #include "closedoor.h"
 #include "actor.h"
 #include "engine.h"
-#include <iostream>
 Result CloseDoor::perform(Engine& engine){
     Vec position = actor->get_position();
     bool successful = false;
@@ -11,11 +10,7 @@ Result CloseDoor::perform(Engine& engine){
         if (tile.is_door()){
             successful = true;
             Door& door = engine.dungeon.doors.at(neighbor);
-            std::cout << "Door at " << neighbor << '\n';
             door.close();
-        }
-        else {
-            std::cout << "Not door here at " << neighbor << '\n';
         }
     }
     if(successful){
