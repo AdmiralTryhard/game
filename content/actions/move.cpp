@@ -4,6 +4,7 @@
 #include "tile.h"
 #include "dungeon.h"
 #include "opendoor.h"
+#include "rest.h"
 
 
 Move::Move(Vec direction) : direction{direction}{
@@ -30,9 +31,14 @@ Result Move::perform(Engine& engine){
         }
     }
     else { // only floor and future enemies
-        actor->move_to(new_position);
+        if(engine.dungeon.tiles(new_position).actor == nullptr) {
+            actor->move_to(new_position);
+            return success();
+        }
+        else{
         actor->change_direction(direction);
-        return success();
+        return alternative(Rest{}); //will be replaced with attacking once I figure this out
+        }
     }
 }
 
