@@ -1,5 +1,6 @@
 #include "engine.h"
 #include "heros.h"
+#include "monsters.h"
 
 int main() {
     std::string filename{"settings.txt"};
@@ -7,5 +8,12 @@ int main() {
     Engine engine{settings};
 
     engine.create_hero(Heros::elf);
+
+    MonsterType goblins = Monsters::goblin();
+    MonsterType ogres = Monsters::ogre();
+    MonsterType demons = Monsters::demon();
+    engine.create_monster(goblins);
+    engine.create_monster(demons);
+    engine.create_monster(ogres);
     engine.run();
 }

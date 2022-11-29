@@ -1,6 +1,9 @@
 #include "closedoor.h"
 #include "actor.h"
 #include "engine.h"
+#include "events.h"
+#include "updatefov.h"
+
 Result CloseDoor::perform(Engine& engine){
     Vec position = actor->get_position();
     bool successful = false;
@@ -14,6 +17,7 @@ Result CloseDoor::perform(Engine& engine){
         }
     }
     if(successful){
+        engine.events.add(UpdateFOV{});
         return success();
     }
     else {

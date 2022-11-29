@@ -26,7 +26,7 @@ Result Move::perform(Engine& engine){
             return success();
         }
         else {
-            return alternative(OpenDoor(direction));
+            return alternative(OpenDoor{direction});
         }
     }
     else { // only floor and future enemies
