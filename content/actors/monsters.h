@@ -2,6 +2,7 @@
 
 #include "monstertype.h"
 #include "none.h"
+#include "action.h"
 #include "engine.h"
 
 namespace Monsters {
@@ -11,16 +12,7 @@ namespace Monsters {
     MonsterType ogre();
     MonsterType demon();
     constexpr int default_speed{8};
-    MonsterType goblin() { 
-    int health = 2; 
-    return {"goblin", default_speed, health, std::make_shared<None>(), default_behavior}; 
-    }
-    MonsterType ogre() { 
-    int health = 8; 
-    return {"goblin", default_speed, health, std::make_shared<None>(), default_behavior};  
-    }
-    MonsterType demon() { 
-    int health = 10; 
-    return {"goblin", default_speed, health, std::make_shared<None>(), default_behavior}; 
-    }
+
+
+
 }

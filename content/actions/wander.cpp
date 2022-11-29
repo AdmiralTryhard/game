@@ -3,6 +3,7 @@
 #include "actor.h"
 #include "engine.h"
 #include "move.h"
+#include "rest.h"
 #include "randomness.h"
 
 Result Wander::perform(Engine& engine){
@@ -15,6 +16,9 @@ Result Wander::perform(Engine& engine){
         if (!tile.is_wall() && !tile.actor) {
             Vec direction = neighbor - pos;
             return alternative(Move{direction});
+        }
+        else{
+            return alternative(Rest{});
         }
     }
 }
