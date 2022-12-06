@@ -22,23 +22,21 @@ Result Move::perform(Engine& engine){
     }
     if(is_door){
         Door& door = engine.dungeon.doors.at(new_position);
-        if(door.is_open()){
-            actor->move_to(new_position);
-            return success();
-        }
-        else {
+        if(!door.is_open()){
             return alternative(OpenDoor{direction});
         }
     }
-    else { // only floor and future enemies
-        if(engine.dungeon.tiles(new_position).actor == nullptr) {
-            actor->move_to(new_position);
-            return success();
-        }
-        else{
-        Actor* possible_enemy = engine.dungeon.tiles(new_position).actor;
-        return alternative(Attack{*possible_enemy}); //will be replaced with attacking once I figure this out
-        }
+    // only floor and future enemies
+    if(engine.dungeon.tiles(new_position).actor == nullptr) {
+        actor->move_to(new_position);
+        return success();
     }
+    Actor* possible_enemy = engine.dungeon.tiles(new_position).actor;
+    if(possible_enemy->team == actor-> team){
+        return alternative(Rest{}); //Prevents INTENTIONAL friendly fire.
+    }
+
+    return alternative(Attack{*possible_enemy}); //will be replaced with attacking once I figure this out
 }
+    
 
