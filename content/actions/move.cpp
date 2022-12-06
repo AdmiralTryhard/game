@@ -5,7 +5,7 @@
 #include "dungeon.h"
 #include "opendoor.h"
 #include "rest.h"
-
+#include "attack.h"
 
 Move::Move(Vec direction) : direction{direction}{
 
@@ -36,7 +36,8 @@ Result Move::perform(Engine& engine){
             return success();
         }
         else{
-        return alternative(Rest{}); //will be replaced with attacking once I figure this out
+        Actor* possible_enemy = engine.dungeon.tiles(new_position).actor;
+        return alternative(Attack{*possible_enemy}); //will be replaced with attacking once I figure this out
         }
     }
 }

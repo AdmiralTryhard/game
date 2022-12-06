@@ -5,21 +5,22 @@
 #include "wander.h"
 #include "rest.h"
 #include "randomness.h"
+#include "sword.h"
 
 
 
 
     MonsterType Monsters::goblin() { 
         int health = 2; 
-        return {"goblin", default_speed, health, std::make_shared<None>(), default_behavior}; 
+        return {"goblin", default_speed, health, std::make_shared<Sword>(3), default_behavior}; 
     }
     MonsterType Monsters::ogre() { 
         int health = 8; 
-        return {"ogre", default_speed, health, std::make_shared<None>(), default_behavior};  
+        return {"ogre", default_speed, health, std::make_shared<Sword>(3), default_behavior};  
     }
     MonsterType Monsters::demon() { 
         int health = 10; 
-        return {"demon", default_speed, health, std::make_shared<None>(), default_behavior}; 
+        return {"demon", default_speed, health, std::make_shared<Sword>(3), default_behavior}; 
     }
 std::unique_ptr<Action> Monsters::default_behavior(Engine& engine, Monster& me){
     //pursue hero if seen

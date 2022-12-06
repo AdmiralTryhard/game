@@ -12,7 +12,9 @@ int main() {
     MonsterType goblins = Monsters::goblin();
     MonsterType ogres = Monsters::ogre();
     MonsterType demons = Monsters::demon();
-    engine.create_monster(goblins);
+    for(int i = 0; i <= 20; ++i){
+        engine.create_monster(goblins);
+    }
     engine.create_monster(demons);
     engine.create_monster(ogres);
     engine.run();
