@@ -16,6 +16,7 @@ Result Move::perform(Engine& engine){
     Vec new_position = position + direction;
     bool is_wall = engine.dungeon.tiles(new_position).is_wall();
     bool is_door = engine.dungeon.tiles(new_position).is_door();
+    actor->change_direction(direction); //always going to look where you tried to move
     if(is_wall){
         return failure();
     }
@@ -23,7 +24,6 @@ Result Move::perform(Engine& engine){
         Door& door = engine.dungeon.doors.at(new_position);
         if(door.is_open()){
             actor->move_to(new_position);
-            actor->change_direction(direction);
             return success();
         }
         else {
@@ -36,7 +36,6 @@ Result Move::perform(Engine& engine){
             return success();
         }
         else{
-        actor->change_direction(direction);
         return alternative(Rest{}); //will be replaced with attacking once I figure this out
         }
     }

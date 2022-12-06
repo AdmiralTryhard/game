@@ -1,6 +1,7 @@
 #pragma once
 
 #include "action.h"
+#include "actor.h"
 
 class Attack : public Action {
 public:
