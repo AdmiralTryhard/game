@@ -1,11 +1,12 @@
 #include "actor.h"
 #include "engine.h"
 #include <sstream>
+#include <algorithm>
 
-Actor::Actor(Engine& engine, const Vec& position, int max_health, int team, int speed)
+Actor::Actor(Engine& engine, const Vec& position, int health, int team, int speed)
     :engine{engine}, position{position}, direction{1, 0},
-     max_health{max_health}, alive{true}, team{team}, speed{speed}, energy{0} {
-    health = max_health;
+     health{health}, max_health{health}, alive{true}, team{team}, speed{speed}, energy{0} {
+    
     // place actor onto its dungeon tile
     Tile& tile = engine.dungeon.tiles(position);
     if (tile.actor == nullptr) {
@@ -33,6 +34,10 @@ const Vec& Actor::get_position() const {
     return position;
 }
 
+const Vec& Actor::get_direction() const {
+    return direction;
+}
+
 bool Actor::is_visible() const {
     // actor is visible if tile is visible
     const Tile& tile = engine.dungeon.tiles(position);
@@ -41,14 +46,5 @@ bool Actor::is_visible() const {
 
 void Actor::take_damage(int amount) {
     health -= amount;
+    health = std::clamp(health, 0, max_health);
 }
-
-void Actor::heal(int amount){
-    if(health + amount >= max_health){
-        health = max_health;
-    }
-    else {
-        health += amount;
-    }
-}
-

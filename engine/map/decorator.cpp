@@ -29,8 +29,8 @@ Dungeon Decorator::create_dungeon() {
             place_destroyed_wall();
         }
     }
-       
-    return Dungeon{tiles, rooms, doors, doodads};
+
+    return Dungeon{tiles, rooms, doors, doodads, torch_positions};
 }
 
 void Decorator::set_tile_type(const Grid<int>& layout, int x, int y) {
@@ -210,7 +210,9 @@ void Decorator::place_torches() {
     bool randomize{true};
     for (auto& position : positions) {
         if (probability(50)) {
-            doodads[position] = graphics.get_animated_sprite(sprite_name, ticks_per_frame, randomize);
+            doodads[position] = graphics.get_animated_sprite(sprite_name, ticks_per_frame, randomize, randomize);
+            torch_positions.insert(position);
+            
         }
     }
 }
