@@ -6,13 +6,13 @@
 #include "rest.h"
 #include "randomness.h"
 #include "sword.h"
-
+#include "knife.h"
 
 
 
     MonsterType Monsters::goblin() { 
         int health = 2; 
-        return {"goblin", default_speed, health, std::make_shared<Sword>(3), default_behavior}; 
+        return {"goblin", default_speed, health, std::make_shared<Knife>(2), default_behavior}; 
     }
     MonsterType Monsters::ogre() { 
         int health = 8; 

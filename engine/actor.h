@@ -12,7 +12,7 @@ class Action;
 // base class for all interacting beings
 class Actor {
 public:
-    Actor(Engine& engine, const Vec& position, int health, int team, int speed);
+    Actor(Engine& engine, const Vec& position, int max_health, int team, int speed);
 
     virtual void change_direction(const Vec& direction);
     virtual void move_to(const Vec& position);
@@ -20,6 +20,7 @@ public:
     bool is_visible() const;
 
     void take_damage(int amount);
+    void heal(int amount);
     virtual void attack(Actor& defender) = 0;
     
     virtual void update() = 0;
@@ -32,7 +33,7 @@ protected:
 
 public:
     // health gets reduced by calling take damage
-    int health;
+    int max_health, health;
     bool alive;
 
     

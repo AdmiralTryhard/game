@@ -2,10 +2,10 @@
 #include "engine.h"
 #include <sstream>
 
-Actor::Actor(Engine& engine, const Vec& position, int health, int team, int speed)
+Actor::Actor(Engine& engine, const Vec& position, int max_health, int team, int speed)
     :engine{engine}, position{position}, direction{1, 0},
-     health{health}, alive{true}, team{team}, speed{speed}, energy{0} {
-    
+     max_health{max_health}, alive{true}, team{team}, speed{speed}, energy{0} {
+    health = max_health;
     // place actor onto its dungeon tile
     Tile& tile = engine.dungeon.tiles(position);
     if (tile.actor == nullptr) {
@@ -42,3 +42,13 @@ bool Actor::is_visible() const {
 void Actor::take_damage(int amount) {
     health -= amount;
 }
+
+void Actor::heal(int amount){
+    if(health + amount >= max_health){
+        health = max_health;
+    }
+    else {
+        health += amount;
+    }
+}
+
