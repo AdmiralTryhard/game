@@ -9,10 +9,10 @@ int main() {
 
     engine.create_hero(Heros::elf);
 
-    MonsterType goblins = Monsters::goblin();
     MonsterType ogres = Monsters::ogre();
     MonsterType demons = Monsters::demon();
     for(int i = 0; i <= 20; ++i){
+        MonsterType goblins = Monsters::goblin();
         engine.create_monster(goblins);
     }
     engine.create_monster(demons);
