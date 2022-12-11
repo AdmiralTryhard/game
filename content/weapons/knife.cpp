@@ -12,4 +12,7 @@ void Knife::use(Engine& engine, Actor& attacker, Actor& defender){
     if(probability(50 + attacker.speed * 8)){ //faster characters are more likely to hit.
         engine.events.add(Swing{sprite, direction, defender, damage + attacker.health / 8}); // beefier characters will have less speed and hit harder.
     }
+    else{
+        engine.events.add(Swing{sprite, direction, defender, 0, });
+    }
 }

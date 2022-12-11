@@ -36,7 +36,7 @@ Result Move::perform(Engine& engine){
         return alternative(Rest{}); //Prevents INTENTIONAL friendly fire.
     }
 
-    return alternative(Attack{*possible_enemy}); //will be replaced with attacking once I figure this out
+    return alternative(Attack{*possible_enemy}); 
 }
     
 
