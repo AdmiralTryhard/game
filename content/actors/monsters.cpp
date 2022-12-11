@@ -16,11 +16,11 @@
     }
     MonsterType Monsters::ogre() { 
         int health = 8; 
-        return {"ogre", default_speed, health, std::make_shared<Sword>(3), default_behavior};  
+        return {"ogre", default_speed / 2, health, std::make_shared<Sword>(3), default_behavior};  
     }
     MonsterType Monsters::demon() { 
         int health = 10; 
-        return {"demon", default_speed, health, std::make_shared<Sword>(3), default_behavior}; 
+        return {"demon", 6, health, std::make_shared<Sword>(3), default_behavior}; 
     }
 std::unique_ptr<Action> Monsters::default_behavior(Engine& engine, Monster& me){
     //pursue hero if seen

@@ -16,26 +16,27 @@ delta = 15;
 
     if(direction == Vec{1, 0}){
         starting_angle = 90;
+        sprite.shift.x -= 10;
+        sprite.shift.y -= 10;
     }
     else if(direction == Vec{-1, 0}){
         starting_angle = -90;
+        sprite.shift.x += 10;
+        sprite.shift.y -= 10;
     }
     else if(direction == Vec{0, 1}){
-        sprite.shift.y -= 12; //image coordinates means this is up
-        double sign = std::copysign(1.0, starting_angle);
-        sprite.shift.x += 10 * sign;
+        sprite.shift.y += 10; //image coordinates means this is up
         starting_angle = 0;
     }
     else{
-        sprite.shift.y += 12; //likewise this means down
-        double sign = std::copysign(1.0, starting_angle);
-        sprite.shift.x += 10 * sign;
+        sprite.shift.y -= 15; //likewise this means down
         starting_angle = 180;
     }
 
 }
 
-    void Stab::execute(Engine&){
+void Stab::execute(Engine&){
+    sprite.angle = starting_angle;
     if(direction == Vec{1, 0}){
         sprite.shift.x += delta/duration;
     }
