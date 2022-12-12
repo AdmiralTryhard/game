@@ -13,6 +13,6 @@ void Sword::use(Engine& engine, Actor& attacker, Actor& defender){
         engine.events.add(Swing{sprite, direction, defender, damage + attacker.health / 4}); // beefier characters will have less speed and hit harder.
     }
     else{
-        engine.events.add(Swing{sprite, direction, defender, 0, });
+        engine.events.add(Swing{sprite, direction, defender, 0, }); //even misses show the swing animation so you know
     }
 }

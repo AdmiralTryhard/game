@@ -11,11 +11,18 @@ int main() {
 
     MonsterType ogres = Monsters::ogre();
     MonsterType demons = Monsters::demon();
-    for(int i = 0; i <= 20; ++i){
+    for(int i = 0; i <= 30; ++i){
         MonsterType goblins = Monsters::goblin();
         engine.create_monster(goblins);
     }
-    engine.create_monster(demons);
-    engine.create_monster(ogres);
+    for(int i = 0; i <= 10; ++i){
+        MonsterType demons = Monsters::demon();
+        engine.create_monster(demons);
+    }
+    for(int i = 0; i <= 5; ++i){
+        MonsterType ogres = Monsters::ogre();
+        engine.create_monster(ogres);
+   
+    }
     engine.run();
 }
