@@ -17,8 +17,6 @@ Result Wander::perform(Engine& engine){
             Vec direction = neighbor - pos;
             return alternative(Move{direction});
         }
-        else{
-            return alternative(Rest{});
-        }
     }
+    return alternative(Rest{});
 }
