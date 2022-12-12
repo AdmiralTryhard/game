@@ -15,7 +15,7 @@ Result Wander::perform(Engine& engine){
         Tile& tile = engine.dungeon.tiles(neighbor);
         if (!tile.is_wall() && !tile.actor) {
             Vec direction = neighbor - pos;
-            return alternative(Move{direction});
+            return alternative(Move{direction});g
         }
     }
     return alternative(Rest{});
